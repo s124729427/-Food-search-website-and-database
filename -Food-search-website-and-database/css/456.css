@@ -1,0 +1,49 @@
+body{
+
+  background-image:url;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  margin:0px
+
+}
+#h1 #h2{
+  margin: 0 auto;
+}
+.wrapper{
+  width: 1200px;
+  height: 1024px;
+  margin:0 auto;
+  background-color: rgba(255,255,255, .9);
+
+}
+.header{
+  width: 1200px;
+  display: inline-block;
+  font-size: 18.5px;
+  font-family: fantasy;
+  text-align: center;
+}
+
+#main_manu{
+list-style:none;
+padding-left:0px;
+}
+#main_manu li{
+  display: inline-block;
+}
+#main_manu li a{
+  display:block;
+  padding: 0px 95px;
+  text-decoration: none;
+  color: #000;
+  font-size: 40px;
+  font-weight: bold;
+  font-family: Microsoft JhengHei;
+  position: relative;
+
+}
+#main_manu li a:hover{
+  color: #83521e;
+}

@@ -1,0 +1,91 @@
+body{
+  width: auto;
+  height: auto;
+  background-attachment: fixed;
+  background-position: center;
+  background-color: #333;
+
+}
+<?php
+
+
+if(isset($_POST['price1']))
+{
+      $price1 = $_POST['price1'];
+       echo $price1;
+    }elseif (isset($_POST['price2'])) {
+      $price2 = $_POST['price2'];
+       echo $price2;
+    }elseif (isset($_POST['calorie1'])) {
+      $calorie1 = $_POST['calorie1'];
+       echo $calorie1;
+    }elseif (isset($_POST['calorie2'])) {
+      $calorie2 = $_POST['calorie2'];
+       echo $calorie2;
+    }elseif (isset($_POST['keyword'])) {
+      $keyword = $_POST['keyword'];
+       echo $keyword;
+    }
+?>
+<?php if(!empty($datas)):?>
+  <?php foreach($datas as $food):?>
+    <div class="thumbnail a_user">
+      <?php echo "品名:" . $food['fname'] . "價錢:" . $food['fprice'] . "卡路里:" . $food['fcalorie'] . "種類:" . $food['fspecie'] . "照片:" . $food['fphoto'] . "販賣店家:" . $food['rid'];?>
+    </div>
+  <?php endforeach;?>
+<?php endif?>
+
+<?php if(!empty($datas)):?>
+  <?php foreach($datas as $food):?>
+    <?php echo
+    "<div class="fphoto"  style="width:120px;height:120px;margin:0px 0px;float:left;">"
+    "照片:" . $food['fphoto'] .
+    "</div>";
+    "<div class="fname"  style="width:1080px;height:50px;margin:0px 0px;float:left;">"
+    "品名:" . $food['fname'] .
+    "</div>";
+    "<div class="flist"  style="width:1080px;height:70px;margin:0px 0px;float:left;">"
+    "種類:" . $food['fspecie'] ."價錢:" . $food['fprice'] . "卡路里:" . $food['fcalorie'] . "販賣店家:" . $food['rid'];
+
+"</div>"
+?>
+<?php endforeach;?>
+<?php endif?>
+
+
+$sql = "SELECT `food`.`rid`,`food`.`fspecie`,`food`.`fprice`,`food`.`fcalorie`,`rest`.`rid`,`rest`.`rname`
+FROM `food`,`rest`
+WHERE `food`.`rid`=`rest`.`rid` AND `food`.`fspecie`>='$specie' AND `food`.`fprice`>=$price1 AND `food`.`fprice`<=$price2 AND `food`.`fcalorie`>=$calorie1 AND `food`.`fcalorie`<=$calorie2 AND `rest`.`rname` LIKE '%$keyword%'
+";
+
+
+$sql = "SELECT * FROM `food`
+WHERE `fspecie`>='$specie' AND `fprice`>=$price1 AND `fprice`<=$price2 AND `fcalorie`>=$calorie1 AND `fcalorie`<=$calorie2 AND `fname` LIKE '%$keyword%'
+
+"SELECT *
+FROM `food`,`rest`
+WHERE `food`.`rid`=`rest`.`rid`";
+
+if ($keyword="") {
+  $sql = "SELECT * FROM `food`
+  WHERE `fspecie`>='$specie' AND `fprice`>=$price1 AND `fprice`<=$price2 AND `fcalorie`>=$calorie1 AND `fcalorie`<=$calorie2
+";
+}else{
+
+
+
+  if(isset($_POST['keyword'])&&($_POST['keyword']!=""))
+  {
+    $keyword = $_POST['keyword'];
+  }else{
+     $keyword = "";
+  };
+      echo $keyword;
+
+
+. "價錢:" . $food['fprice'] . "卡路里:" . $food['fcalorie'] . "種類:" . $food['fspecie'] . "照片:" . $food['fphoto'] . "販賣店家:" . $food['rid'];?>
+
+<?php echo "店名:" . $rest['rname']
+. "活動:" . $rest['ractivity']
+. "電話:" . $rest['rphone']
+. "位址:" . $rest['rlocation'] ;?>
